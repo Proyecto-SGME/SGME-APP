@@ -1,5 +1,6 @@
 package cl.getapps.sgme.ui.base;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -28,6 +29,8 @@ public class BaseActivity extends AppCompatActivity {
     private ActivityComponent mActivityComponent;
     private long mActivityId;
 
+    private ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,8 @@ public class BaseActivity extends AppCompatActivity {
             configPersistentComponent = sComponentsMap.get(mActivityId);
         }
         mActivityComponent = configPersistentComponent.activityComponent(new ActivityModule(this));
+
+        progressDialog = new ProgressDialog(this);
     }
 
     @Override
@@ -67,6 +72,14 @@ public class BaseActivity extends AppCompatActivity {
 
     public ActivityComponent activityComponent() {
         return mActivityComponent;
+    }
+
+    public void showProgressDialog(){
+        progressDialog.show();
+    }
+
+    public void hideProgressDialog(){
+        progressDialog.cancel();
     }
 
 }

@@ -22,7 +22,16 @@
         android:background="@drawable/bg_titulo"
         />
 
-    <android.support.v7.widget.RecyclerView
+    <TextView
+        android:id="@+id/item_falso"
+        android:layout_below="@id/titulo_seccion"
+        android:text="Item Ruta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/horizontal_margin"
+        />
+
+    <!--<android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_below="@id/titulo_seccion"
         android:layout_width="match_parent"
@@ -30,6 +39,6 @@
         android:clipToPadding="false"
         android:paddingBottom="6dp"
         android:paddingTop="6dp"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical" />-->
 
 </RelativeLayout>

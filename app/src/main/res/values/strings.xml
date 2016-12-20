@@ -14,4 +14,6 @@
     <string name="title_activity_notificaciones">SGME</string>
     <string name="title_activity_cuenta">SGME</string>
     <string name="title_activity_ayuda">SGME</string>
+    <string name="title_activity_ruta">SGME</string>
+    <string name="title_activity_detalle_evento">DetalleEvento</string>
 </resources>

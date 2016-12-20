@@ -54,6 +54,8 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainMenus
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        showProgressDialog();
+
         mMenusAdapter.setOnMenuCLickListener(this);
 
         mRecyclerView.setAdapter(mMenusAdapter);
@@ -79,6 +81,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainMenus
     public void showMenus(List<Menu> menus) {
         mMenusAdapter.setMenus(menus);
         mMenusAdapter.notifyDataSetChanged();
+        hideProgressDialog();
     }
 
     @Override

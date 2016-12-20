@@ -22,14 +22,16 @@
         android:background="@drawable/bg_titulo"
         />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabsEventos"
         android:layout_below="@id/titulo_seccion"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingBottom="6dp"
-        android:paddingTop="6dp"
-        android:scrollbars="vertical" />
+        android:layout_height="wrap_content"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pagerEventos"
+        android:layout_below="@id/tabsEventos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>
