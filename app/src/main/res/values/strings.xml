@@ -16,4 +16,5 @@
     <string name="title_activity_ayuda">SGME</string>
     <string name="title_activity_ruta">SGME</string>
     <string name="title_activity_detalle_evento">DetalleEvento</string>
+    <string name="dismiss">Abrir</string>
 </resources>
