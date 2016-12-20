@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+    "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+    "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+
+<module nombreMenu = "Checker">
+
+    <property nombreMenu="charset" value="UTF-8"/>
+
+    <property nombreMenu="severity" value="error"/>
+
+    <module nombreMenu="FileTabCharacter">
+        <property nombreMenu="eachLine" value="true"/>
+    </module>
+
+    <module nombreMenu="TreeWalker">
+
+        <!-- Imports -->
+
+        <module nombreMenu="RedundantImport">
+            <property nombreMenu="severity" value="error"/>
+        </module>
+
+        <module nombreMenu="AvoidStarImport">
+            <property nombreMenu="severity" value="error"/>
+        </module>
+
+        <!-- General Code Style -->
+
+        <module nombreMenu="LineLength">
+            <property nombreMenu="max" value="100"/>
+            <property nombreMenu="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
+        </module>
+
+        <module nombreMenu="EmptyBlock">
+            <property nombreMenu="option" value="TEXT"/>
+            <property nombreMenu="tokens" value="LITERAL_TRY, LITERAL_FINALLY, LITERAL_IF, LITERAL_ELSE, LITERAL_SWITCH"/>
+        </module>
+
+        <module nombreMenu="EmptyCatchBlock">
+            <property nombreMenu="exceptionVariableName" value="expected"/>
+        </module>
+
+        <module nombreMenu="LeftCurly">
+            <property nombreMenu="maxLineLength" value="100"/>
+        </module>
+
+        <module nombreMenu="RightCurly">
+            <property nombreMenu="option" value="alone"/>
+            <property nombreMenu="tokens" value="CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, LITERAL_DO, STATIC_INIT, INSTANCE_INIT"/>
+        </module>
+
+        <module nombreMenu="RightCurly">
+            <property nombreMenu="option" value="same"/>
+        </module>
+
+        <module nombreMenu="NoFinalizer"/>
+
+        <module nombreMenu="ArrayTypeStyle"/>
+
+        <module nombreMenu="ModifierOrder"/>
+
+        <module nombreMenu="Indentation">
+            <property nombreMenu="basicOffset" value="4"/>
+            <property nombreMenu="braceAdjustment" value="0"/>
+            <property nombreMenu="caseIndent" value="4"/>
+            <property nombreMenu="throwsIndent" value="4"/>
+            <property nombreMenu="lineWrappingIndentation" value="8"/>
+            <property nombreMenu="arrayInitIndent" value="2"/>
+        </module>
+
+        <!-- White Space -->
+
+        <module nombreMenu="GenericWhitespace">
+            <message key="ws.followed"
+                     value="GenericWhitespace ''{0}'' is followed by whitespace."/>
+            <message key="ws.preceded"
+                     value="GenericWhitespace ''{0}'' is preceded with whitespace."/>
+            <message key="ws.illegalFollow"
+                     value="GenericWhitespace ''{0}'' should followed by whitespace."/>
+            <message key="ws.notPreceded"
+                     value="GenericWhitespace ''{0}'' is not preceded with whitespace."/>
+        </module>
+
+        <module nombreMenu="WhitespaceAround">
+            <property nombreMenu="allowEmptyConstructors" value="true"/>
+            <property nombreMenu="allowEmptyMethods" value="false"/>
+            <property nombreMenu="allowEmptyTypes" value="false"/>
+            <property nombreMenu="allowEmptyLoops" value="false"/>
+            <message key="ws.notFollowed"
+                     value="WhitespaceAround: ''{0}'' is not followed by whitespace. Empty blocks may only be represented as '{}' when not part of a multi-block statement (4.1.3)"/>
+            <message key="ws.notPreceded"
+                     value="WhitespaceAround: ''{0}'' is not preceded with whitespace."/>
+            <property nombreMenu="severity" value="error"/>
+        </module>
+
+        <module nombreMenu="WhitespaceAfter">
+            <property nombreMenu="tokens" value="COMMA, SEMI, TYPECAST"/>
+        </module>
+
+        <module nombreMenu="NoWhitespaceBefore">
+            <property nombreMenu="tokens" value="SEMI, DOT, POST_DEC, POST_INC"/>
+            <property nombreMenu="allowLineBreaks" value="true"/>
+        </module>
+
+        <module nombreMenu="NoWhitespaceAfter">
+            <property nombreMenu="tokens" value="BNOT, DEC, DOT, INC, LNOT, UNARY_MINUS, UNARY_PLUS"/>
+            <property nombreMenu="allowLineBreaks" value="true"/>
+        </module>
+
+        <!-- Naming -->
+
+        <module nombreMenu="PackageName">
+            <property nombreMenu="format" value="^[a-z]+(\.[a-z][a-z0-9]*)*$"/>
+            <message key="nombreMenu.invalidPattern"
+                     value="Package nombreMenu ''{0}'' must match pattern ''{1}''."/>
+        </module>
+
+        <module nombreMenu="MethodName">
+            <property nombreMenu="format" value="^[a-z][a-z0-9][a-zA-Z0-9_]*$"/>
+            <message key="nombreMenu.invalidPattern"
+                     value="Method nombreMenu ''{0}'' must match pattern ''{1}''."/>
+        </module>
+
+        <module nombreMenu="TypeName">
+            <message key="nombreMenu.invalidPattern"
+                     value="Type nombreMenu ''{0}'' must match pattern ''{1}''."/>
+        </module>
+
+        <module nombreMenu="MemberName">
+            <property nombreMenu="applyToPublic" value="false" />
+            <property nombreMenu="applyToPackage" value="false" />
+            <property nombreMenu="applyToProtected" value="false" />
+            <property nombreMenu="format" value="^m[A-Z][a-z0-9][a-zA-Z0-9]*$"/>
+            <message key="nombreMenu.invalidPattern"
+                     value="Member nombreMenu ''{0}'' must match pattern ''{1}''."/>
+        </module>
+
+        <module nombreMenu="ParameterName">
+            <property nombreMenu="format" value="^[a-z][a-zA-Z0-9]*$"/>
+            <message key="nombreMenu.invalidPattern"
+                     value="Parameter nombreMenu ''{0}'' must match pattern ''{1}''."/>
+        </module>
+
+        <module nombreMenu="LocalVariableName">
+            <property nombreMenu="tokens" value="VARIABLE_DEF"/>
+            <property nombreMenu="format" value="^[a-z][a-zA-Z0-9]*$"/>
+            <property nombreMenu="allowOneCharVarInForLoop" value="true"/>
+            <message key="nombreMenu.invalidPattern"
+                     value="Local variable nombreMenu ''{0}'' must match pattern ''{1}''."/>
+        </module>
+
+        <module nombreMenu="ClassTypeParameterName">
+            <property nombreMenu="format" value="(^[A-Z][0-9]?)$|([A-Z][a-zA-Z0-9]*[T]$)"/>
+            <message key="nombreMenu.invalidPattern"
+                     value="Class type nombreMenu ''{0}'' must match pattern ''{1}''."/>
+        </module>
+
+        <module nombreMenu="MethodTypeParameterName">
+            <property nombreMenu="format" value="(^[A-Z][0-9]?)$|([A-Z][a-zA-Z0-9]*[T]$)"/>
+            <message key="nombreMenu.invalidPattern"
+                     value="Method type nombreMenu ''{0}'' must match pattern ''{1}''."/>
+        </module>
+
+    </module>
+
+</module>

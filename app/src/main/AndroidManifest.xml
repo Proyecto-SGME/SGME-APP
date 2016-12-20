@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cl.getapps.sgme">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name=".SgmeApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service android:name=".data.SyncService" />
+
+        <receiver
+            android:name=".data.SyncService$SyncOnConnectionAvailable"
+            android:enabled="false">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".ui.eventos.EventosActivity"
+            android:label="@string/title_activity_eventos"
+            android:parentActivityName=".ui.main.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cl.getapps.sgme.ui.main.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.hojaderuta.HojaRutaActivity"
+            android:label="@string/title_activity_hoja_ruta"
+            android:parentActivityName=".ui.main.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cl.getapps.sgme.ui.main.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.notificaciones.NotificacionesActivity"
+            android:label="@string/title_activity_notificaciones"
+            android:parentActivityName=".ui.main.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cl.getapps.sgme.ui.main.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.cuenta.CuentaActivity"
+            android:label="@string/title_activity_cuenta"
+            android:parentActivityName=".ui.main.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cl.getapps.sgme.ui.main.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.ayuda.AyudaActivity"
+            android:label="@string/title_activity_ayuda"
+            android:parentActivityName=".ui.main.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cl.getapps.sgme.ui.main.MainActivity" />
+        </activity>
+    </application>
+
+</manifest>

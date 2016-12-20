@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_ayuda"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="cl.getapps.sgme.ui.ayuda.AyudaActivity"
+    tools:showIn="@layout/activity_ayuda">
+
+    <TextView
+        android:id="@+id/titulo_seccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AYUDA"
+        android:textSize="@dimen/text_headline"
+        android:textColor="@color/secondary_text"
+        android:textStyle="bold"
+        android:elevation="4dp"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:background="@drawable/bg_titulo"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_below="@id/titulo_seccion"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="6dp"
+        android:paddingTop="6dp"
+        android:scrollbars="vertical" />
+
+</RelativeLayout>

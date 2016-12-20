@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_cuenta"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="cl.getapps.sgme.ui.cuenta.CuentaActivity"
+    tools:showIn="@layout/activity_cuenta">
+
+    <TextView
+        android:id="@+id/titulo_seccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CUENTA"
+        android:textSize="@dimen/text_headline"
+        android:textColor="@color/secondary_text"
+        android:textStyle="bold"
+        android:elevation="4dp"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:background="@drawable/bg_titulo"
+        />
+
+    <!--<android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_below="@id/titulo_seccion"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="6dp"
+        android:paddingTop="6dp"
+        android:scrollbars="vertical" />-->
+
+    <Button
+        android:id="@+id/btnCerrarSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cerrar sesión"
+        android:textColor="@color/rojo"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_alignParentBottom="true" />
+
+    <View
+        android:id="@+id/linea"
+        android:layout_above="@id/btnCerrarSesion"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/divider_color"/>
+
+    <Button
+        android:id="@+id/sincronizar"
+        android:layout_above="@id/linea"
+        android:text="Sincronizar aplicación"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/primary_text"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"/>
+
+    <TextView
+        android:id="@+id/nombresuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/horizontal_margin"
+        android:textSize="@dimen/text_body"
+        android:textColor="@color/primary_text"
+        android:text="USUARIO"
+        android:layout_below="@+id/titulo_seccion"
+        />
+
+    <TextView
+        android:id="@+id/username"
+        android:text="Cruzol"
+        android:textColor="@color/secondary_text"
+        android:padding="@dimen/horizontal_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/nombresuario"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/tipoUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/horizontal_margin"
+        android:textSize="@dimen/text_body"
+        android:text="TIPO USUARIO"
+        android:textColor="@color/primary_text"
+        android:layout_below="@+id/nombresuario"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/userTipe"
+        android:text="Técnico"
+        android:textColor="@color/secondary_text"
+        android:padding="@dimen/horizontal_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tipoUsuario"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">SGME</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="dialog_action_ok">OK</string>
+    <string name="dialog_action_cancel">Cancel</string>
+    <string name="dialog_error_title">Sorry</string>
+
+    <string name="empty_ribots">There aren\'t any menus</string>
+    <string name="error_loading_ribots">There was a problem loading the menus</string>
+    <string name="title_activity_eventos">SGME</string>
+    <string name="title_activity_hoja_ruta">SGME</string>
+    <string name="title_activity_notificaciones">SGME</string>
+    <string name="title_activity_cuenta">SGME</string>
+    <string name="title_activity_ayuda">SGME</string>
+</resources>
