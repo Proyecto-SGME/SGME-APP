@@ -12,7 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cl.getapps.sgme.R;
 import cl.getapps.sgme.ui.base.BaseActivity;
-import cl.getapps.sgme.ui.hojaderuta.detallehojaruta.RutaActivity;
+/*import cl.getapps.sgme.ui.hojaderuta.detallehojaruta.RutaActivity;*/
 
 public class HojaRutaActivity extends BaseActivity {
 
@@ -40,11 +40,11 @@ public class HojaRutaActivity extends BaseActivity {
 
         context = this;
 
-        item_falso.setOnClickListener(new View.OnClickListener() {
+        /*item_falso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(context, RutaActivity.class));
             }
-        });
+        });*/
     }
 }

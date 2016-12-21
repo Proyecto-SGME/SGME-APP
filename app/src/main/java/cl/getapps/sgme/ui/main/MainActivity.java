@@ -1,5 +1,6 @@
 package cl.getapps.sgme.ui.main;
 
+import android.app.ActivityOptions;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -9,7 +10,11 @@ import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Fade;
+import android.transition.Slide;
+import android.transition.TransitionInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,6 +66,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainMenus
         super.onCreate(savedInstanceState);
         activityComponent().inject(this);
         setContentView(R.layout.activity_main);
+        setupWindowAnimations();
         ButterKnife.bind(this);
 
         showProgressDialog();
@@ -82,6 +88,11 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainMenus
                 crearNotificacion();
             }
         });
+    }
+
+    private void setupWindowAnimations() {
+        Fade slide = (Fade) TransitionInflater.from(this).inflateTransition(R.transition.activity_fade);
+        getWindow().setExitTransition(slide);
     }
 
     @Override
@@ -114,13 +125,19 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainMenus
     }
 
     @Override
-    public void onMenuClick(Menu menu) {
+    public void onMenuClick(Menu menu, ImageView hexColorView) {
         switch (menu.profile().actividadMenu()){
             case "HojaRutaActivity":
                 startActivity(new Intent(this, HojaRutaActivity.class));
                 break;
             case "EventosActivity":
-                startActivity(new Intent(this, EventosActivity.class));
+                //startActivity(new Intent(this, EventosActivity.class));
+                Intent i = new Intent(MainActivity.this, EventosActivity.class);
+
+                String transitionName = "transicion";
+
+                ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, hexColorView, transitionName);
+                startActivity(i, transitionActivityOptions.toBundle());
                 break;
             case "NotificacionesActivity":
                 startActivity(new Intent(this, NotificacionesActivity.class));

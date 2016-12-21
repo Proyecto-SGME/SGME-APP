@@ -55,7 +55,7 @@ public class MainMenusAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
         final Menu menu = mMenus.get(position);
-        MenuViewholder menuholder = (MenuViewholder) holder;
+        final MenuViewholder menuholder = (MenuViewholder) holder;
         menuholder.nameTextView.setText(String.format("%s", menu.profile()
                 .nombreMenu().nombre().toUpperCase()));
 
@@ -80,7 +80,7 @@ public class MainMenusAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         menuholder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onMenuClick(menu);
+                mListener.onMenuClick(menu, menuholder.hexColorView);
             }
         });
         setAnimation(menuholder.itemView, position);
@@ -129,6 +129,6 @@ public class MainMenusAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     public interface OnMenuClickListener{
-        void onMenuClick(Menu menu);
+        void onMenuClick(Menu menu, ImageView hexColorView);
     }
 }

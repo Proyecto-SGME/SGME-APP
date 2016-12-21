@@ -1,22 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    style="@style/Widget.AppCompat.Button.Borderless.Colored">
+    android:layout_marginBottom="6dp"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="12dp"
+    android:layout_marginTop="6dp"
+    card_view:cardElevation="1dp"
+    android:background="@color/primary_light"
+    card_view:cardCornerRadius="4dp">
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/primary_light"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            >
 
-    <TextView
-        android:id="@+id/id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:textAppearance="?attr/textAppearanceListItem" />
+            <TextView
+                android:id="@+id/tituloNombreCliente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre:"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:textAppearance="?attr/textAppearanceListItem" />
+            <TextView
+                android:id="@+id/nombreCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Usuario"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:layout_toEndOf="@+id/tituloNombreCliente" />
 
-    <TextView
-        android:id="@+id/content"
-        android:layout_below="@id/id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:textAppearance="?attr/textAppearanceListItem" />
+            <TextView
+                android:id="@+id/tituloMaquina"
+                android:layout_below="@id/nombreCliente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Maquina:"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:textAppearance="?attr/textAppearanceListItem" />
+            <TextView
+                android:id="@+id/maquina"
+                android:layout_below="@id/nombreCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Usuario"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:layout_toEndOf="@+id/tituloNombreCliente" />
 
-</RelativeLayout>
+            <TextView
+                android:id="@+id/tituloTipoFalla"
+                android:layout_below="@id/maquina"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tipo falla:"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:textAppearance="?attr/textAppearanceListItem" />
+
+            <TextView
+                android:id="@+id/tipoFalla"
+                android:layout_below="@id/maquina"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Usuario"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:layout_toEndOf="@+id/tituloNombreCliente" />
+
+            <TextView
+                android:id="@+id/tituloFechaEvento"
+                android:layout_below="@id/tipoFalla"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:text="Fecha:"
+                android:textAppearance="?attr/textAppearanceListItem" />
+
+            <TextView
+                android:id="@+id/fechaEvento"
+                android:layout_below="@id/tipoFalla"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Usuario"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:layout_marginBottom="@dimen/text_margin"
+                android:layout_toEndOf="@+id/tituloNombreCliente" />
+
+        </RelativeLayout>
+</android.support.v7.widget.CardView>

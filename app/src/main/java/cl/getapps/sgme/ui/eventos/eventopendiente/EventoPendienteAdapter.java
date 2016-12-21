@@ -8,22 +8,28 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import cl.getapps.sgme.R;
-import cl.getapps.sgme.ui.eventos.eventopendiente.dummy.DummyContent.DummyItem;
+import cl.getapps.sgme.data.model.api.Evento;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
+ * {@link RecyclerView.Adapter} that can display a {@link Evento} and makes a call to the
+ * specified {@link EventoPendienteFragment.OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class EventoPendienteAdapter extends RecyclerView.Adapter<EventoPendienteAdapter.ViewHolder> {
 
-    private final List<DummyItem>                   mValues;
-    private final EventoPendienteFragment.OnListFragmentInteractionListener mListener;
+    private List<Evento> eventos;
+    private EventoPendienteFragment.OnListFragmentInteractionListener mListener;
 
-    public EventoPendienteAdapter(List<DummyItem> items, EventoPendienteFragment.OnListFragmentInteractionListener listener) {
-        mValues = items;
+    public EventoPendienteAdapter(EventoPendienteFragment.OnListFragmentInteractionListener listener) {
         mListener = listener;
+    }
+
+    public void setEventos(List<Evento> eventos){
+        this.eventos = eventos;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -35,9 +41,12 @@ public class EventoPendienteAdapter extends RecyclerView.Adapter<EventoPendiente
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mItem = eventos.get(position);
+
+        holder.nombreCliente.setText(holder.mItem.nombreCliente);
+        holder.maquina.setText(holder.mItem.maquina);
+        holder.tipoFalla.setText(holder.mItem.tipoFalla);
+        holder.fecha.setText(holder.mItem.fechaEvento);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,25 +62,25 @@ public class EventoPendienteAdapter extends RecyclerView.Adapter<EventoPendiente
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        return eventos.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View      mView;
-        public final TextView  mIdView;
-        public final TextView  mContentView;
-        public       DummyItem mItem;
+        public       Evento mItem;
+        @BindView(R.id.nombreCliente)
+        TextView nombreCliente;
+        @BindView(R.id.maquina)
+        TextView maquina;
+        @BindView(R.id.fechaEvento)
+        TextView fecha;
+        @BindView(R.id.tipoFalla)
+        TextView tipoFalla;
 
         public ViewHolder(View view) {
             super(view);
+            ButterKnife.bind(this, view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
-            mContentView = (TextView) view.findViewById(R.id.content);
-        }
-
-        @Override
-        public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
         }
     }
 }

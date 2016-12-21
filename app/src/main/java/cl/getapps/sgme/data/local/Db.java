@@ -5,6 +5,7 @@ import android.database.Cursor;
 
 import cl.getapps.sgme.data.model.NombreMenu;
 import cl.getapps.sgme.data.model.VistaMenu;
+import cl.getapps.sgme.data.model.api.Evento;
 
 public class Db {
 
@@ -49,6 +50,49 @@ public class Db {
                     .setHexColor(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_HEX_COLOR)))
                     .setIcon(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ICON)))
                     .build();
+        }
+    }
+
+    public abstract static class EventoTable {
+        public static final String TABLE_NAME = "eventos";
+
+        public static final String COLUMN_ID_EVENTO = "id_evento";
+        public static final String COLUMN_NOMBRE_CLIENTE = "nombre_cliente";
+        public static final String COLUMN_MAQUINA = "maquina";
+        public static final String COLUMN_TIPO_FALLA = "tipo_falla";
+        public static final String COLUMN_FECHA_EVENTO = "evento";
+        public static final String COLUMN_ESTADO = "estado";
+
+        public static final String CREATE =
+                "CREATE TABLE " + TABLE_NAME + " (" +
+                        COLUMN_ID_EVENTO + " INT PRIMARY KEY, " +
+                        COLUMN_NOMBRE_CLIENTE + " TEXT, " +
+                        COLUMN_MAQUINA + " TEXT, " +
+                        COLUMN_TIPO_FALLA + " TEXT, " +
+                        COLUMN_FECHA_EVENTO + " TEXT, " +
+                        COLUMN_ESTADO + " TEXT" +
+                        "); ";
+
+        public static ContentValues toContentValues(Evento evento) {
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_ID_EVENTO, evento.id);
+            values.put(COLUMN_NOMBRE_CLIENTE, evento.nombreCliente);
+            values.put(COLUMN_MAQUINA, evento.maquina);
+            values.put(COLUMN_TIPO_FALLA, evento.tipoFalla);
+            values.put(COLUMN_FECHA_EVENTO, evento.fechaEvento);
+            values.put(COLUMN_ESTADO, evento.estado);
+            return values;
+        }
+
+        public static Evento parseCursor(Cursor cursor) {
+            Evento evento = new Evento();
+            evento.id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID_EVENTO));
+            evento.nombreCliente = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NOMBRE_CLIENTE));
+            evento.maquina = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_MAQUINA));
+            evento.tipoFalla = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIPO_FALLA));
+            evento.fechaEvento = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FECHA_EVENTO));
+            evento.estado = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ESTADO));
+            return evento;
         }
     }
 }

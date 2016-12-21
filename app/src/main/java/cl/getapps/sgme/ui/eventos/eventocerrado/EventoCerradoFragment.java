@@ -2,7 +2,6 @@ package cl.getapps.sgme.ui.eventos.eventocerrado;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,11 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import cl.getapps.sgme.R;
-import cl.getapps.sgme.ui.eventos.eventocerrado.dummy.DummyContent;
-import cl.getapps.sgme.ui.eventos.eventocerrado.dummy.DummyContent.DummyItem;
-
 import java.util.List;
+
+import cl.getapps.sgme.R;
+import cl.getapps.sgme.data.model.api.Evento;
+import cl.getapps.sgme.ui.base.BaseFragment;
+import cl.getapps.sgme.util.DialogFactory;
+
+import javax.inject.Inject;
 
 /**
  * A fragment representing a list of Items.
@@ -22,12 +24,17 @@ import java.util.List;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class EventoCerradoFragment extends Fragment {
+public class EventoCerradoFragment extends BaseFragment implements EventoCerradoMvpView {
 
     // TODO: Customize parameters
     private int mColumnCount = 1;
 
     private OnListFragmentInteractionListener mListener;
+
+    @Inject
+    EventoCerradoPresenter mPresenter;
+
+    EventoCerradoAdapter mAdapter;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -39,6 +46,7 @@ public class EventoCerradoFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        fragmentComponent().inject(this);
 
     }
 
@@ -46,6 +54,10 @@ public class EventoCerradoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_evento_cerrado_list, container, false);
+
+        mPresenter.attachView(this);
+
+        mAdapter = new EventoCerradoAdapter(mListener);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -56,7 +68,7 @@ public class EventoCerradoFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new EventoCerradoAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new EventoCerradoAdapter(mListener));
         }
         return view;
     }
@@ -79,6 +91,19 @@ public class EventoCerradoFragment extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public void onError() {
+        hideProgressDialog();
+        DialogFactory.createGenericErrorDialog(getActivity(), "Error al cargar eventos").show();
+    }
+
+    @Override
+    public void onEventosOk(List<Evento> eventos) {
+        hideProgressDialog();
+        mAdapter.setEventos(eventos);
+
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -91,6 +116,6 @@ public class EventoCerradoFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(Evento evento);
     }
 }

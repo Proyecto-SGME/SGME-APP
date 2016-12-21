@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import cl.getapps.sgme.R;
+import cl.getapps.sgme.data.model.api.Evento;
 import cl.getapps.sgme.ui.eventos.eventopendiente.dummy.DummyContent;
 import cl.getapps.sgme.ui.eventos.eventopendiente.dummy.DummyContent.DummyItem;
 
@@ -105,6 +106,6 @@ public class EventoPendienteFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(Evento evento);
     }
 }

@@ -6,11 +6,13 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import cl.getapps.sgme.data.model.Menu;
+import cl.getapps.sgme.data.model.api.Evento;
 import cl.getapps.sgme.util.MenuFactory;
 import rx.Observable;
 import cl.getapps.sgme.data.local.DatabaseHelper;
 import cl.getapps.sgme.data.local.PreferencesHelper;
 import cl.getapps.sgme.data.remote.SgmeService;
+import rx.Subscription;
 
 @Singleton
 public class DataManager {
@@ -39,4 +41,23 @@ public class DataManager {
         return mDatabaseHelper.getMenus().distinct();
     }
 
+    public Observable<List<Evento>> getEventos() {
+        return mSgmeService.getEventos();
+    }
+
+    public Observable<Evento> insertarEventos(List<Evento> eventos) {
+        return mDatabaseHelper.insertarEventos(eventos);
+    }
+
+    public Observable<List<Evento>> getEventosAbiertosBd() {
+        return mDatabaseHelper.getEventosAbiertosBd();
+    }
+
+    public Observable<List<Evento>> getEventosCerradosBd() {
+        return mDatabaseHelper.getEventosCerradosBd();
+    }
+
+    public Observable<List<Evento>> getEventosPendientesBd() {
+        return mDatabaseHelper.getEventosPendientesBd();
+    }
 }

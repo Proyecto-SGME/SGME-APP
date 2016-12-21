@@ -27,7 +27,8 @@
             android:background="@color/primary"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:transitionName="transicion"/>
 
         <TextView
             android:id="@+id/text_name"

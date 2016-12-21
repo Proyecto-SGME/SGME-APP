@@ -1,5 +1,6 @@
 package cl.getapps.sgme.injection.component;
 
+import cl.getapps.sgme.injection.module.FragmentModule;
 import dagger.Component;
 import cl.getapps.sgme.injection.ConfigPersistent;
 import cl.getapps.sgme.injection.module.ActivityModule;
@@ -17,5 +18,7 @@ import cl.getapps.sgme.ui.base.BaseActivity;
 public interface ConfigPersistentComponent {
 
     ActivityComponent activityComponent(ActivityModule activityModule);
+
+    FragmentComponent fragmentComponent(FragmentModule fragmentModule);
 
 }
