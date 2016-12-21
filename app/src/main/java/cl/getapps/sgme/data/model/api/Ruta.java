@@ -9,6 +9,7 @@ import android.os.Parcelable;
 
 public class Ruta implements Parcelable {
 
+
     protected Ruta(Parcel in) {
     }
 

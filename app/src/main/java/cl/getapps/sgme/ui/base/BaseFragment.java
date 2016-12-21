@@ -52,6 +52,7 @@ public class BaseFragment extends Fragment {
         mFragmentComponent = configPersistentComponent.fragmentComponent(new FragmentModule(this));
 
         progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Cargando...");
     }
 
     @Override

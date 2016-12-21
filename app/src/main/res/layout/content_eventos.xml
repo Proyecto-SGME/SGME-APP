@@ -20,25 +20,11 @@
         android:elevation="4dp"
         android:padding="@dimen/activity_horizontal_margin"
         android:background="@drawable/bg_titulo"
-        android:layout_toEndOf="@+id/ic_eventos" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        android:id="@+id/ic_eventos"
-        android:src="@drawable/ic_eventos"
-        android:padding="16dp"
-        android:elevation="4dp"
-        android:background="@drawable/bg_icono"
-        android:transitionName="transicion"
-        android:layout_above="@+id/tabsEventos"
-        android:layout_alignParentTop="true" />
-
-
+         />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabsEventos"
+        android:background="#EEE"
         android:layout_below="@id/titulo_seccion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

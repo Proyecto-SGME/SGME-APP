@@ -29,7 +29,7 @@ public class BaseActivity extends AppCompatActivity {
     private ActivityComponent mActivityComponent;
     private long mActivityId;
 
-    private ProgressDialog progressDialog;
+    public ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,7 @@ public class BaseActivity extends AppCompatActivity {
         mActivityComponent = configPersistentComponent.activityComponent(new ActivityModule(this));
 
         progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Cargando...");
     }
 
     @Override

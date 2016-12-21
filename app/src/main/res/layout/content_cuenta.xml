@@ -51,7 +51,7 @@
         android:layout_marginBottom="4dp"
         android:background="@color/divider_color"/>
 
-    <Button
+    <!--<Button
         android:id="@+id/sincronizar"
         android:layout_above="@id/linea"
         android:text="Sincronizar aplicación"
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/primary_text"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"/>
+        style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"/>-->
 
     <TextView
         android:id="@+id/nombresuario"

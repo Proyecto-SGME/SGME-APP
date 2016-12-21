@@ -38,7 +38,7 @@ public class EventoPendientePresenter extends BasePresenter<EventoPendienteMvpVi
         super.detachView();
     }
 
-    public void getEventosPendietesBd(){
+    public void getEventosPendientesBd(){
         checkViewAttached();
         RxUtil.unsubscribe(mSubscription);
         mSubscription = mDataManager.getEventosPendientesBd()

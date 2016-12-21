@@ -4,6 +4,7 @@ import cl.getapps.sgme.injection.PerFragment;
 import cl.getapps.sgme.injection.module.FragmentModule;
 import cl.getapps.sgme.ui.eventos.eventoabierto.EventoAbiertoFragment;
 import cl.getapps.sgme.ui.eventos.eventocerrado.EventoCerradoFragment;
+import cl.getapps.sgme.ui.eventos.eventopendiente.EventoPendienteFragment;
 import dagger.Subcomponent;
 
 /**
@@ -17,4 +18,6 @@ public interface FragmentComponent {
     void inject(EventoAbiertoFragment eventoAbiertoFragment);
 
     void inject(EventoCerradoFragment eventoCerradoFragment);
+
+    void inject(EventoPendienteFragment eventoPendienteFragment);
 }

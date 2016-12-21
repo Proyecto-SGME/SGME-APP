@@ -1,11 +1,11 @@
-package cl.getapps.sgme.ui.eventos.eventocerrado;
+package cl.getapps.sgme.ui.eventos.detalle;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
 import cl.getapps.sgme.data.DataManager;
-import cl.getapps.sgme.data.model.api.Evento;
+import cl.getapps.sgme.data.model.api.DetalleEvento;
 import cl.getapps.sgme.ui.base.BasePresenter;
 import cl.getapps.sgme.util.RxUtil;
 import rx.Subscriber;
@@ -18,18 +18,18 @@ import timber.log.Timber;
  * Creado por GRINGRAZ el 21-12-2016.
  */
 
-public class EventoCerradoPresenter extends BasePresenter<EventoCerradoMvpView> {
+public class DetalleEventoPresenter extends BasePresenter<DetalleEventoMvpView> {
     DataManager mDataManager;
     Subscription mSubscription;
 
     @Inject
-    public EventoCerradoPresenter(DataManager mDataManager) {
+    public DetalleEventoPresenter(DataManager mDataManager) {
         this.mDataManager = mDataManager;
     }
 
     @Override
-    public boolean isViewAttached() {
-        return super.isViewAttached();
+    public void attachView(DetalleEventoMvpView mvpView) {
+        super.attachView(mvpView);
     }
 
     @Override
@@ -37,26 +37,26 @@ public class EventoCerradoPresenter extends BasePresenter<EventoCerradoMvpView> 
         super.detachView();
     }
 
-    public void getEventosCerradosBd(){
+    public void getDetalleEvento(int id){
         checkViewAttached();
         RxUtil.unsubscribe(mSubscription);
-        mSubscription = mDataManager.getEventosCerradosBd()
+        mSubscription = mDataManager.getDetalleEvento(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<List<Evento>>() {
+                .subscribe(new Subscriber<List<DetalleEvento>>() {
                     @Override
                     public void onCompleted() {
-
+                        System.out.println("EVENTOS COMPLETOS");
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Timber.e(e, "ERROR EVENTOS BD");
+                        Timber.e(e, "ERROR EVENTOS");
                         getMvpView().onError();
                     }
 
                     @Override
-                    public void onNext(List<Evento> eventos) {
+                    public void onNext(List<DetalleEvento> eventos) {
                         getMvpView().onEventosOk(eventos);
                     }
                 });

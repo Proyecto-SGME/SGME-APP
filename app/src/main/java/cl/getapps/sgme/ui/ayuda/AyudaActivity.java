@@ -56,7 +56,7 @@ public class AyudaActivity extends BaseActivity {
 
         itemAyudaList.add(new ItemAyuda("Cerrar sesión", ayudaList));
         itemAyudaList.add(new ItemAyuda("Sincronizar aplicación", ayudaList));
-        itemAyudaList.add(new ItemAyuda("Cambiar estado evento", ayudaList));
+        itemAyudaList.add(new ItemAyuda("Ver eventos", ayudaList));
         itemAyudaList.add(new ItemAyuda("Ver rutas", ayudaList));
         itemAyudaList.add(new ItemAyuda("Ver notificaciones", ayudaList));
 

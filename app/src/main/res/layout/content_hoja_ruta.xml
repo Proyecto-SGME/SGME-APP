@@ -31,6 +31,231 @@
         android:padding="@dimen/horizontal_margin"
         />
 
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="6dp"
+        card_view:cardElevation="1dp"
+        android:layout_below="@id/titulo_seccion"
+        card_view:cardCornerRadius="4dp">
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/primary_light"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            >
+
+            <TextView
+                android:id="@+id/tituloNombreCliente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ubicación:"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:textAppearance="?attr/textAppearanceListItem" />
+            <TextView
+                android:id="@+id/nombreCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Villasana 2039, Quinta Normal"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:layout_toEndOf="@+id/tituloNombreCliente" />
+
+            <TextView
+                android:id="@+id/tituloMaquina"
+                android:layout_below="@id/nombreCliente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Horario:"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:textAppearance="?attr/textAppearanceListItem" />
+            <TextView
+                android:id="@+id/maquina"
+                android:layout_below="@id/nombreCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="09:00 - 18:30"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:layout_toEndOf="@+id/tituloNombreCliente" />
+
+            <TextView
+                android:id="@+id/tituloTipoFalla"
+                android:layout_below="@id/maquina"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contacto:"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:textAppearance="?attr/textAppearanceListItem" />
+
+            <TextView
+                android:id="@+id/tipoFalla"
+                android:layout_below="@id/maquina"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Raul Castro"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:layout_toEndOf="@+id/tituloNombreCliente" />
+
+            <TextView
+                android:id="@+id/tituloFechaEvento"
+                android:layout_below="@id/tipoFalla"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:text="Observación:"
+                android:textAppearance="?attr/textAppearanceListItem" />
+
+            <TextView
+                android:id="@+id/fechaEvento"
+                android:layout_below="@id/tipoFalla"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Maquina en exterior"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:layout_marginBottom="@dimen/text_margin"
+                android:layout_toEndOf="@+id/tituloFechaEvento" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_below="@id/card_view1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="6dp"
+        card_view:cardElevation="1dp"
+        card_view:cardCornerRadius="4dp">
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/container1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/primary_light"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            >
+
+            <TextView
+                android:id="@+id/tituloNombreCliente1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ubicación:"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:textAppearance="?attr/textAppearanceListItem" />
+            <TextView
+                android:id="@+id/nombreCliente1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="San Diego 1952"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:layout_toEndOf="@+id/tituloNombreCliente1" />
+
+            <TextView
+                android:id="@+id/tituloMaquina1"
+                android:layout_below="@id/nombreCliente1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Horario:"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:textAppearance="?attr/textAppearanceListItem" />
+            <TextView
+                android:id="@+id/maquina1"
+                android:layout_below="@id/nombreCliente1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="10:00 a 20:00"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:layout_toEndOf="@+id/tituloNombreCliente1" />
+
+            <TextView
+                android:id="@+id/tituloTipoFalla1"
+                android:layout_below="@id/maquina1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contacto:"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:textAppearance="?attr/textAppearanceListItem" />
+
+            <TextView
+                android:id="@+id/tipoFalla1"
+                android:layout_below="@id/maquina1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Felipe Valenzuela"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:layout_toEndOf="@+id/tituloNombreCliente1" />
+
+            <TextView
+                android:id="@+id/tituloFechaEvento1"
+                android:layout_below="@id/tipoFalla1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:text="Observación:"
+                android:textAppearance="?attr/textAppearanceListItem" />
+
+            <TextView
+                android:id="@+id/fechaEvento1"
+                android:layout_below="@id/tipoFalla1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Maquina golpeada"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:layout_marginBottom="@dimen/text_margin"
+                android:layout_toEndOf="@+id/tituloFechaEvento1" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
     <!--<android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_below="@id/titulo_seccion"

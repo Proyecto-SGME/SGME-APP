@@ -4,8 +4,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -15,15 +17,16 @@ import cl.getapps.sgme.data.model.api.Evento;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link Evento} and makes a call to the
- * specified {@link EventoPendienteFragment.OnListFragmentInteractionListener}.
+ * specified {@link EventoPendienteFragment.OnEventoCerradoInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class EventoPendienteAdapter extends RecyclerView.Adapter<EventoPendienteAdapter.ViewHolder> {
 
     private List<Evento> eventos;
-    private EventoPendienteFragment.OnListFragmentInteractionListener mListener;
+    private EventoPendienteFragment.OnEventoCerradoInteractionListener mListener;
 
-    public EventoPendienteAdapter(EventoPendienteFragment.OnListFragmentInteractionListener listener) {
+    public EventoPendienteAdapter(EventoPendienteFragment.OnEventoCerradoInteractionListener listener) {
+        eventos = new ArrayList<>();
         mListener = listener;
     }
 
@@ -48,13 +51,13 @@ public class EventoPendienteAdapter extends RecyclerView.Adapter<EventoPendiente
         holder.tipoFalla.setText(holder.mItem.tipoFalla);
         holder.fecha.setText(holder.mItem.fechaEvento);
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
+        holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
+                    mListener.onEventoPendienteInteraction(holder.mItem);
                 }
             }
         });
@@ -76,6 +79,8 @@ public class EventoPendienteAdapter extends RecyclerView.Adapter<EventoPendiente
         TextView fecha;
         @BindView(R.id.tipoFalla)
         TextView tipoFalla;
+        @BindView(R.id.container)
+        RelativeLayout container;
 
         public ViewHolder(View view) {
             super(view);

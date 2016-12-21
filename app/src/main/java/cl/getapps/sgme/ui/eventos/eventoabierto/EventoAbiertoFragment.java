@@ -15,17 +15,13 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import cl.getapps.sgme.R;
 import cl.getapps.sgme.data.model.api.Evento;
 import cl.getapps.sgme.ui.base.BaseFragment;
 import cl.getapps.sgme.util.DialogFactory;
 
-/**
- * A fragment representing a list of Items.
- * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
- * interface.
- */
 public class EventoAbiertoFragment extends BaseFragment implements EventoAbiertoMvpView {
 
     // TODO: Customize parameter argument names
@@ -33,12 +29,13 @@ public class EventoAbiertoFragment extends BaseFragment implements EventoAbierto
     // TODO: Customize parameters
     private int mColumnCount = 1;
 
-    private OnListFragmentInteractionListener mListener;
-
     @Inject
     EventoAbiertoPresenter mPresenter;
 
     EventoAbiertoAdapter mAdapter;
+
+    @BindView(R.id.list)
+    RecyclerView recyclerView;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -71,22 +68,15 @@ public class EventoAbiertoFragment extends BaseFragment implements EventoAbierto
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_evento_list, container, false);
+        ButterKnife.bind(this, view);
 
         mPresenter.attachView(this);
 
-        mAdapter = new EventoAbiertoAdapter(mListener);
+        mAdapter = new EventoAbiertoAdapter();
 
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(mAdapter);
-        }
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        recyclerView.setAdapter(mAdapter);
+
         return view;
     }
 
@@ -95,23 +85,6 @@ public class EventoAbiertoFragment extends BaseFragment implements EventoAbierto
         super.onViewCreated(view, savedInstanceState);
         showProgressDialog();
         mPresenter.getEventosAbiertosBd();
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
     }
 
     @Override
@@ -124,21 +97,6 @@ public class EventoAbiertoFragment extends BaseFragment implements EventoAbierto
     public void onEventosOk(List<Evento> eventos) {
         hideProgressDialog();
         mAdapter.setEventos(eventos);
-
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onListFragmentInteraction(Evento evento);
-    }
 }

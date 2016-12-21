@@ -66,7 +66,6 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainMenus
         super.onCreate(savedInstanceState);
         activityComponent().inject(this);
         setContentView(R.layout.activity_main);
-        setupWindowAnimations();
         ButterKnife.bind(this);
 
         showProgressDialog();
@@ -131,13 +130,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainMenus
                 startActivity(new Intent(this, HojaRutaActivity.class));
                 break;
             case "EventosActivity":
-                //startActivity(new Intent(this, EventosActivity.class));
-                Intent i = new Intent(MainActivity.this, EventosActivity.class);
-
-                String transitionName = "transicion";
-
-                ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, hexColorView, transitionName);
-                startActivity(i, transitionActivityOptions.toBundle());
+                startActivity(new Intent(this, EventosActivity.class));
                 break;
             case "NotificacionesActivity":
                 startActivity(new Intent(this, NotificacionesActivity.class));

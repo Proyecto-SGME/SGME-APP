@@ -2,6 +2,7 @@ package cl.getapps.sgme.injection.component;
 
 import cl.getapps.sgme.ui.ayuda.AyudaActivity;
 import cl.getapps.sgme.ui.eventos.EventosActivity;
+import cl.getapps.sgme.ui.eventos.detalle.DetalleEventoActivity;
 import cl.getapps.sgme.ui.hojaderuta.HojaRutaActivity;
 import dagger.Subcomponent;
 import cl.getapps.sgme.injection.PerActivity;
@@ -22,4 +23,6 @@ public interface ActivityComponent {
     void inject(HojaRutaActivity hojaRutaActivity);
 
     void inject(AyudaActivity ayudaActivity);
+
+    void inject(DetalleEventoActivity detalleEventoActivity);
 }

@@ -4,7 +4,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,15 +18,15 @@ import cl.getapps.sgme.data.model.api.Evento;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link Evento} and makes a call to the
- * specified {@link EventoCerradoFragment.OnListFragmentInteractionListener}.
+ * specified {@link EventoCerradoFragment.OnEventoCerradoInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class EventoCerradoAdapter extends RecyclerView.Adapter<EventoCerradoAdapter.ViewHolder> {
 
     private List<Evento> eventos;
-    private final EventoCerradoFragment.OnListFragmentInteractionListener mListener;
+    private final EventoCerradoFragment.OnEventoCerradoInteractionListener mListener;
 
-    public EventoCerradoAdapter(EventoCerradoFragment.OnListFragmentInteractionListener listener) {
+    public EventoCerradoAdapter(EventoCerradoFragment.OnEventoCerradoInteractionListener listener) {
         eventos = new ArrayList<>();
         mListener = listener;
     }
@@ -50,13 +52,14 @@ public class EventoCerradoAdapter extends RecyclerView.Adapter<EventoCerradoAdap
         holder.tipoFalla.setText(holder.mItem.tipoFalla);
         holder.fecha.setText(holder.mItem.fechaEvento);
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
+        holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
+
+                    mListener.onEventoCerradoInteraction(holder.mItem);
                 }
             }
         });
@@ -68,8 +71,8 @@ public class EventoCerradoAdapter extends RecyclerView.Adapter<EventoCerradoAdap
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public final View      mView;
-        public       Evento mItem;
+        public View      mView;
+        public Evento mItem;
         @BindView(R.id.nombreCliente)
         TextView nombreCliente;
         @BindView(R.id.maquina)
@@ -78,6 +81,8 @@ public class EventoCerradoAdapter extends RecyclerView.Adapter<EventoCerradoAdap
         TextView fecha;
         @BindView(R.id.tipoFalla)
         TextView tipoFalla;
+        @BindView(R.id.container)
+        RelativeLayout container;
 
         public ViewHolder(View view) {
             super(view);

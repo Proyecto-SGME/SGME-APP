@@ -1,33 +1,27 @@
 package cl.getapps.sgme.ui.eventos.eventoabierto;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cl.getapps.sgme.R;
 import cl.getapps.sgme.data.model.api.Evento;
+import cl.getapps.sgme.ui.eventos.detalle.DetalleEventoActivity;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link Evento} and makes a call to the
- * specified {@link EventoAbiertoFragment.OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
-public class EventoAbiertoAdapter extends RecyclerView.Adapter<EventoAbiertoAdapter.ViewHolder> {
+public class EventoAbiertoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Evento> eventos;
-    private final EventoAbiertoFragment.OnListFragmentInteractionListener mListener;
 
-    public EventoAbiertoAdapter(EventoAbiertoFragment.OnListFragmentInteractionListener listener) {
-        mListener = listener;
+    public EventoAbiertoAdapter() {
         eventos = new ArrayList<>();
     }
 
@@ -37,29 +31,33 @@ public class EventoAbiertoAdapter extends RecyclerView.Adapter<EventoAbiertoAdap
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_evento, parent, false);
-        return new ViewHolder(view);
+        return new ItemHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = eventos.get(position);
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
+        final ItemHolder holder1 = (ItemHolder) holder;
+        holder1.mItem = eventos.get(position);
 
-        holder.nombreCliente.setText(holder.mItem.nombreCliente);
-        holder.maquina.setText(holder.mItem.maquina);
-        holder.tipoFalla.setText(holder.mItem.tipoFalla);
-        holder.fecha.setText(holder.mItem.fechaEvento);
+        holder1.nombreCliente.setText(holder1.mItem.nombreCliente);
+        holder1.maquina.setText(holder1.mItem.maquina);
+        holder1.tipoFalla.setText(holder1.mItem.tipoFalla);
+        holder1.fecha.setText(holder1.mItem.fechaEvento);
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
+        holder1.nombreCliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }
+                holder1.itemView.getContext().startActivity(new Intent(holder.itemView.getContext(), DetalleEventoActivity.class).putExtra("evento", holder1.mItem));
+            }
+        });
+
+        holder1.container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder1.itemView.getContext().startActivity(new Intent(holder.itemView.getContext(), DetalleEventoActivity.class).putExtra("evento", holder1.mItem));
             }
         });
     }
@@ -69,11 +67,12 @@ public class EventoAbiertoAdapter extends RecyclerView.Adapter<EventoAbiertoAdap
         return eventos.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public final View      mView;
+    public class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public       Evento mItem;
         @BindView(R.id.nombreCliente)
         TextView nombreCliente;
+        @BindView(R.id.container)
+        RelativeLayout container;
         @BindView(R.id.maquina)
         TextView maquina;
         @BindView(R.id.fechaEvento)
@@ -81,10 +80,15 @@ public class EventoAbiertoAdapter extends RecyclerView.Adapter<EventoAbiertoAdap
         @BindView(R.id.tipoFalla)
         TextView tipoFalla;
 
-        public ViewHolder(View view) {
-            super(view);
-            ButterKnife.bind(this, view);
-            mView = view;
+        public ItemHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            itemView.getContext().startActivity(new Intent(itemView.getContext(), DetalleEventoActivity.class).putExtra("evento", mItem));
         }
     }
 }

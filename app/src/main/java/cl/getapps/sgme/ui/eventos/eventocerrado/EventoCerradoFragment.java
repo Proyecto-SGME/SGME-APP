@@ -2,6 +2,7 @@ package cl.getapps.sgme.ui.eventos.eventocerrado;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,7 +22,7 @@ import javax.inject.Inject;
 /**
  * A fragment representing a list of Items.
  * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
+ * Activities containing this fragment MUST implement the {@link OnEventoCerradoInteractionListener}
  * interface.
  */
 public class EventoCerradoFragment extends BaseFragment implements EventoCerradoMvpView {
@@ -29,7 +30,7 @@ public class EventoCerradoFragment extends BaseFragment implements EventoCerrado
     // TODO: Customize parameters
     private int mColumnCount = 1;
 
-    private OnListFragmentInteractionListener mListener;
+    private OnEventoCerradoInteractionListener mListener;
 
     @Inject
     EventoCerradoPresenter mPresenter;
@@ -68,17 +69,24 @@ public class EventoCerradoFragment extends BaseFragment implements EventoCerrado
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new EventoCerradoAdapter(mListener));
+            recyclerView.setAdapter(mAdapter);
         }
         return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        showProgressDialog();
+        mPresenter.getEventosCerradosBd();
     }
 
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
+        if (context instanceof OnEventoCerradoInteractionListener) {
+            mListener = (OnEventoCerradoInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnListFragmentInteractionListener");
@@ -114,8 +122,8 @@ public class EventoCerradoFragment extends BaseFragment implements EventoCerrado
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnListFragmentInteractionListener {
+    public interface OnEventoCerradoInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(Evento evento);
+        void onEventoCerradoInteraction(Evento evento);
     }
 }

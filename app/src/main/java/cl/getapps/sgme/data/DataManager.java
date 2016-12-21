@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import cl.getapps.sgme.data.model.Menu;
+import cl.getapps.sgme.data.model.api.DetalleEvento;
 import cl.getapps.sgme.data.model.api.Evento;
 import cl.getapps.sgme.util.MenuFactory;
 import rx.Observable;
@@ -59,5 +60,9 @@ public class DataManager {
 
     public Observable<List<Evento>> getEventosPendientesBd() {
         return mDatabaseHelper.getEventosPendientesBd();
+    }
+
+    public Observable<List<DetalleEvento>> getDetalleEvento(int id) {
+        return mSgmeService.getDetalleEvento(id);
     }
 }

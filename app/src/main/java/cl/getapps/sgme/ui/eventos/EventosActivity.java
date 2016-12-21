@@ -12,6 +12,7 @@ import android.transition.Fade;
 import android.transition.TransitionInflater;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -22,14 +23,14 @@ import butterknife.ButterKnife;
 import cl.getapps.sgme.R;
 import cl.getapps.sgme.data.model.api.Evento;
 import cl.getapps.sgme.ui.base.BaseActivity;
-import cl.getapps.sgme.ui.eventos.detalles.DetalleEvento;
+import cl.getapps.sgme.ui.eventos.detalle.DetalleEventoActivity;
 import cl.getapps.sgme.ui.eventos.eventoabierto.EventoAbiertoFragment;
 import cl.getapps.sgme.ui.eventos.eventocerrado.EventoCerradoFragment;
 import cl.getapps.sgme.ui.eventos.eventopendiente.EventoPendienteFragment;
 import cl.getapps.sgme.util.DialogFactory;
 
-public class EventosActivity extends BaseActivity implements EventoAbiertoFragment.OnListFragmentInteractionListener,
-        EventoCerradoFragment.OnListFragmentInteractionListener, EventoPendienteFragment.OnListFragmentInteractionListener, EventosMvpView {
+public class EventosActivity extends BaseActivity implements
+        EventoCerradoFragment.OnEventoCerradoInteractionListener, EventoPendienteFragment.OnEventoCerradoInteractionListener, EventosMvpView {
 
 
     @BindView(R.id.toolbar)
@@ -52,7 +53,6 @@ public class EventosActivity extends BaseActivity implements EventoAbiertoFragme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eventos);
-        setupWindowAnimations();
         activityComponent().inject(this);
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -93,7 +93,17 @@ public class EventosActivity extends BaseActivity implements EventoAbiertoFragme
     @Override
     public void onError() {
         hideProgressDialog();
-        DialogFactory.createGenericErrorDialog(this, "El servidor no responde").show();
+        DialogFactory.createGenericErrorDialog(this, "Sin sincronización").show();
+    }
+
+    @Override
+    public void onEventoCerradoInteraction(Evento evento) {
+        startActivity(new Intent(this, DetalleEventoActivity.class).putExtra("evento", evento));
+    }
+
+    @Override
+    public void onEventoPendienteInteraction(Evento evento) {
+        startActivity(new Intent(this, DetalleEventoActivity.class).putExtra("evento", evento));
     }
 
     private class ViewPagerAdapter extends FragmentPagerAdapter{
@@ -120,21 +130,4 @@ public class EventosActivity extends BaseActivity implements EventoAbiertoFragme
             return 3;
         }
     }
-
-    @Override
-    public void onListFragmentInteraction(Evento evento) {
-        startActivity(new Intent(this, DetalleEvento.class).putExtra("evento", evento));
-    }
-
-    @Override
-    public void onListFragmentInteraction(Evento evento) {
-        startActivity(new Intent(this, DetalleEvento.class));
-    }
-
-    @Override
-    public void onListFragmentInteraction(Evento evento) {
-        startActivity(new Intent(this, DetalleEvento.class));
-    }
-
-
 }
